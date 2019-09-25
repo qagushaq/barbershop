@@ -11,13 +11,13 @@
     </select> <br>
 
     <label>How can I call you? </label>
-    <input name="username" type="text" class="form-control" placeholder="Input your name" required>
+    <input name="username" type="text" class="form-control" placeholder="Input your name" value="<%=@username%>" >
     <label>Email address</label>
-    <input name="useremail" type="email" class="form-control" placeholder="Input your Email">
+    <input name="useremail" type="email" class="form-control" placeholder="Input your Email" value="<%=@useremail%>" >
     <label>Your phone number</label>
-    <input name="phonenumber" type="text" class="form-control" placeholder="Input your phone number">
+    <input name="phonenumber" type="text" class="form-control" placeholder="Input your phone number" value="<%=@phonenumber%>">
     <label>When will you come? </label>
-    <input name="datetime" type="datetime" class="form-control" placeholder="Input date and time" required>
+    <input name="datetime" type="datetime" class="form-control" placeholder="Input date and time" value="<%=@datetime%>">
 
 
   </div>
@@ -43,6 +43,8 @@
 
 </form>
 
-<script type="text/javascript">
-$('select[name="color"]').simplecolorpicker();
+<script>
+    $(function() {
+  $('select[name="color"]').simplecolorpicker();
+});
 </script>

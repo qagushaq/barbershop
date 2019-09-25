@@ -10,7 +10,8 @@ get '/' do
 end
 
 get '/about' do
-  erb :about
+	@error = 'Something went wrong!'
+	erb :about
 end
 
 get '/visit' do
@@ -24,10 +25,21 @@ post '/visit' do
 	@datetime = params[:datetime]
 	@barber = params[:barber]
 	@color = params[:color]
+
+	hh = { :username => 'name',
+	:useremail => 'email',
+  :phonenumber => 'phonenumber',
+  :datetime => 'the date and time when you come to us :)' }
+
+	@error = "These fields are required: " + hh.select { |key,_| params[key] ==""}.values.join(", ")
+	if @error != ''
+	  return erb :visit
+	end
+
 	@title = "Thank you! We are waiting for you!"
 	@message = "Dear #{@username}, we are wating you at #{@datetime}. We are call back to the number: #{@phonenumber} or write to the email: #{@useremail} for details. Color: #{@color} Barber: #{@barber}"
 	f = File.open './public/clients.txt', 'a'
-  f.write "Client: #{@username}, Phone: #{@phonenumber}, Eemail: #{@useremail} , Date and Time: #{@datetime}, Color: #{@color}. Barber: #{@barber}.\n"
+  	f.write "Client: #{@username}, Phone: #{@phonenumber}, Eemail: #{@useremail} , Date and Time: #{@datetime}, Color: #{@color}. Barber: #{@barber}.\n"
   f.close
 	erb :message
 end
