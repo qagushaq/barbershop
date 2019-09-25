@@ -1,0 +1,48 @@
+<h2>Sign up</h2>
+<p>Here you can sign up for a barbershop</p>
+<form action="/visit" method="post">
+
+  <div class="form-group">
+    <label for="baber">Choose your hero?</label>
+    <select name="barber" >
+      <option value="Valera Petrikevich">Valera Petrikevich</option>
+      <option value="Alexey Lukashevich" selected>Alexey Lukashevich</option>
+      <option value="Anton Grinevich">Anton Grinevich</option>
+    </select> <br>
+
+    <label>How can I call you? </label>
+    <input name="username" type="text" class="form-control" placeholder="Input your name" required>
+    <label>Email address</label>
+    <input name="useremail" type="email" class="form-control" placeholder="Input your Email">
+    <label>Your phone number</label>
+    <input name="phonenumber" type="text" class="form-control" placeholder="Input your phone number">
+    <label>When will you come? </label>
+    <input name="datetime" type="datetime" class="form-control" placeholder="Input date and time" required>
+
+
+  </div>
+
+  <label for="baber">Сhoose a color if you want to dye your hair:</label>
+  <br>
+  <select name="color">
+    <option value="#7bd148">Green</option>
+    <option value="#5484ed">Bold blue</option>
+    <option value="#a4bdfc">Blue</option>
+    <option value="#46d6db">Turquoise</option>
+    <option value="#7ae7bf">Light green</option>
+    <option value="#51b749">Bold green</option>
+    <option value="#fbd75b">Yellow</option>
+    <option value="#ffb878">Orange</option>
+    <option value="#ff887c">Red</option>
+    <option value="#dc2127">Bold red</option>
+    <option value="#dbadff">Purple</option>
+    <option value="#e1e1e1">Gray</option>
+  </select>
+  <br>
+  <button type="submit" class="btn btn-primary">Submit</button>
+
+</form>
+
+<script type="text/javascript">
+$('select[name="color"]').simplecolorpicker();
+</script>
