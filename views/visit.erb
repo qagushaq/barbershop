@@ -1,13 +1,25 @@
 <h2>Sign up</h2>
 <p>Here you can sign up for a barbershop</p>
-<form action="/visit" method="post">
+
+
+<script type="text/javascript">
+    $(function() {
+      //Любой js код, исполнится после загрузки страницы
+    $('#color').simplecolorpicker();
+    $('#datetimepicker').datetimepicker();
+});
+jQuery.datetimepicker.setLocale('en');
+</script>
+
+
+<form action="/visit" method="POST" role="form">
 
   <div class="form-group">
     <label for="baber">Choose your hero?</label>
     <select name="barber" >
-      <option value="Valera Petrikevich">Valera Petrikevich</option>
-      <option value="Alexey Lukashevich" selected>Alexey Lukashevich</option>
-      <option value="Anton Grinevich">Anton Grinevich</option>
+      <option value="Valera Petrikevich" <%=@barber == 'Valera Petrikevich' ? 'selected': ''%> >Valera Petrikevich</option>
+      <option value="Alexey Lukashevich" <%=@barber == 'Alexey Lukashevich' ? 'selected': ''%> >Alexey Lukashevich</option>
+      <option value="Anton Grinevich" <%=@barber == 'Anton Grinevich' ? 'selected': ''%> >Anton Grinevich</option>
     </select> <br>
 
     <label>How can I call you? </label>
@@ -16,15 +28,21 @@
     <input name="useremail" type="email" class="form-control" placeholder="Input your Email" value="<%=@useremail%>" >
     <label>Your phone number</label>
     <input name="phonenumber" type="text" class="form-control" placeholder="Input your phone number" value="<%=@phonenumber%>">
-    <label>When will you come? </label>
-    <input name="datetime" type="datetime" class="form-control" placeholder="Input date and time" value="<%=@datetime%>">
+
+
+    <div class="form-group">
+        <label>When will you come? </label>
+        <input id="datetimepicker" name="datetime" type="text" class="form-control" placeholder="Input date and time" value="<%= @datetime %>">
+    </div>
+
+
 
 
   </div>
 
   <label for="baber">Сhoose a color if you want to dye your hair:</label>
   <br>
-  <select name="color">
+  <select id="color" name="color">
     <option value="#7bd148">Green</option>
     <option value="#5484ed">Bold blue</option>
     <option value="#a4bdfc">Blue</option>
@@ -39,12 +57,6 @@
     <option value="#e1e1e1">Gray</option>
   </select>
   <br>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary">Записаться</button>
 
 </form>
-
-<script>
-    $(function() {
-  $('select[name="color"]').simplecolorpicker();
-});
-</script>
